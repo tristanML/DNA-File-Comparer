@@ -2,10 +2,9 @@ def dna_comparison(f1,f2,str_input,threshold):
     file_1_ls = []
     file_2_ls = []
     segment_index_ls = []
-    known_similarities = []
+    file_1_similarities = []
+    file_2_similarities = []
     n_list = []
-    file1 = open(f1,"r")
-    file2 = open(f2,"r")
     
     if str_input:
         file1 = f1
@@ -28,15 +27,18 @@ def dna_comparison(f1,f2,str_input,threshold):
         current_segment = []
         add_el = False
         for n in range(len(file_2_ls)):
-            while i<len(file_1_ls)-1 and n<len(file_2_ls)-1 and (file_1_ls[i]==file_2_ls[n] and file_1_ls[i+1]==file_2_ls[n+1]) and not (i,n) in known_similarities:
+            while i<len(file_1_ls)-1 and n<len(file_2_ls)-1 and (file_1_ls[i]==file_2_ls[n] and file_1_ls[i+1]==file_2_ls[n+1]) and (not i in file_1_similarities) and (not n in file_2_similarities):
                 current_segment.append((i, n))
-                known_similarities.append((i, n))
+                file_1_similarities.append(i)
+                file_2_similarities.append(n)
                 i+=1
                 n+=1
+        
+            
         if len(current_segment)>1:
             current_segment.append((i,i - (current_segment[0][0]-current_segment[0][1])))
         
-        if len(current_segment)>=threshold:     
+        if len(current_segment)>=threshold: 
             segment_index_ls.append(current_segment)
     
     n = 1
