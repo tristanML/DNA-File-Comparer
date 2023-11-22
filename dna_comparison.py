@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[31]:
-
-
 def dna_comparison(f1,f2,str_input,threshold):
     file_1_ls = []
     file_2_ls = []
@@ -55,16 +49,3 @@ def dna_comparison(f1,f2,str_input,threshold):
         print("FILE 2 INDEX: {0}-{1}".format(ls[0][1],ls[-1][1]))
         print(segment_str)
         n+=1
-
-
-# In[32]:
-
-
-dna_comparison("beta_OU205079.txt","wuhan-1_NC_045512.2.txt",  False, 3)
-
-
-# In[ ]:
-
-
-
-
